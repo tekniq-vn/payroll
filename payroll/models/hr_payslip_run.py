@@ -7,7 +7,9 @@ from odoo import fields, models
 
 class HrPayslipRun(models.Model):
     _name = "hr.payslip.run"
+    _inherit = ["mail.thread", "mail.activity.mixin"]
     _description = "Payslip Batches"
+    _order = "id desc"
 
     name = fields.Char(
         required=True, readonly=True, states={"draft": [("readonly", False)]}
@@ -25,6 +27,7 @@ class HrPayslipRun(models.Model):
         index=True,
         readonly=True,
         copy=False,
+        tracking=1,
         default="draft",
     )
     date_start = fields.Date(
@@ -48,6 +51,17 @@ class HrPayslipRun(models.Model):
         states={"draft": [("readonly", False)]},
         help="If its checked, indicates that all payslips generated from here "
         "are refund payslips.",
+    )
+    struct_id = fields.Many2one(
+        "hr.payroll.structure",
+        string="Structure",
+        readonly=True,
+        states={"draft": [("readonly", False)]},
+        help="Defines the rules that have to be applied to this payslip batch, "
+        "accordingly to the contract chosen. If you let empty the field "
+        "contract, this field isn't mandatory anymore and thus the rules "
+        "applied will be all the rules set on the structure of all contracts "
+        "of the employee valid for the chosen period",
     )
 
     def draft_payslip_run(self):

@@ -31,20 +31,48 @@ msgstr ""
 "1 : n % 1 != 0 ? 2: 3);\n"
 
 #. module: payroll
-#: code:addons/payroll/models/hr_payroll_structure.py:0
-#, python-format
-msgid "%s (copy)"
-msgstr "%s (kopija)"
-
-#. module: payroll
 #: model:ir.actions.report,print_report_name:payroll.action_report_payslip
-msgid "'Payslip - %s' % (object.employee_id.name)"
+msgid ""
+"\n"
+"            'Payslip - %s' % (object.employee_id.name)\n"
+"        "
 msgstr ""
 
 #. module: payroll
 #: model:ir.actions.report,print_report_name:payroll.payslip_details_report
-msgid "'Payslip Details - %s' % (object.employee_id.name)"
+msgid ""
+"\n"
+"            'Payslip Details - %s' % (object.employee_id.name)\n"
+"        "
 msgstr ""
+
+#. module: payroll
+#: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
+msgid ""
+"\n"
+"Wrong python code defined for salary rule %s (%s).\n"
+"Here is the error received:\n"
+"\n"
+"%s\n"
+msgstr ""
+
+#. module: payroll
+#: code:addons/payroll/models/hr_salary_rule.py:0
+#, python-format
+msgid ""
+"\n"
+"Wrong python condition defined for salary rule %s (%s).\n"
+"Here is the error received:\n"
+"\n"
+"%s\n"
+msgstr ""
+
+#. module: payroll
+#: code:addons/payroll/models/hr_payroll_structure.py:0
+#, python-format
+msgid "%s (copy)"
+msgstr "%s (kopija)"
 
 #. module: payroll
 #: model:ir.model.fields,help:payroll.field_hr_payslip__state
@@ -59,15 +87,49 @@ msgid ""
 msgstr ""
 
 #. module: payroll
+#: model:ir.model.fields,help:payroll.field_hr_payslip_change_state__state
+msgid ""
+"* When the payslip is created the status is 'Draft'.             \n"
+"* If the payslip is under verification, the status is 'Compute "
+"Sheet'.              \n"
+"* If the payslip is confirmed then status is set to 'Done'.             \n"
+"* When user cancel payslip the status is 'Rejected'."
+msgstr ""
+
+#. module: payroll
+#: model:mail.template,body_html:payroll.mail_template_hr_payslip
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"        <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"            Dear ${object.employee_id.name},\n"
+"            <br/><br/>\n"
+"            Please find attached the payslip for ${object.payslip_run_id."
+"name}.\n"
+"            <br/><br/>\n"
+"            Do not hesitate to contact us if you have any questions.\n"
+"            <br/><br/>\n"
+"            ${user.signature | safe}\n"
+"        </p>\n"
+"    </div>\n"
+"            "
+msgstr ""
+
+#. module: payroll
 #: model_terms:ir.ui.view,arch_db:payroll.view_hr_payslip_by_employees
 msgid ""
-"<span colspan=\"4\" nolabel=\"1\">This wizard will generate payslips for all "
-"selected employee(s) based on the dates and credit note specified on "
-"Payslips Run.</span>"
+"<span colspan=\"4\" nolabel=\"1\">\n"
+"                        This wizard will generate payslips for all selected "
+"employee(s)\n"
+"                        based on the dates and credit note\n"
+"                        specified\n"
+"                        on Payslips Run.\n"
+"                    </span>"
 msgstr ""
-"<span colspan=\"4\" nolabel=\"1\">Šis vedlys sugeneruos algalapius visiems "
-"pasirinktiems darbuotojams pagal datas ir algalapių veikime nurodytas "
-"kreditines sąskaitas.</span>"
+
+#. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_salary_rule_view_form
+msgid "<strong> and </strong>"
+msgstr ""
 
 #. module: payroll
 #: model_terms:ir.ui.view,arch_db:payroll.report_payslip
@@ -86,6 +148,11 @@ msgstr "<strong>Patvirtintas parašas</strong>"
 #: model_terms:ir.ui.view,arch_db:payroll.report_payslipdetails
 msgid "<strong>Bank Account</strong>"
 msgstr "<strong>Banko sąskaita:</strong>"
+
+#. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_salary_rule_view_form
+msgid "<strong>Between </strong>"
+msgstr ""
 
 #. module: payroll
 #: model_terms:ir.ui.view,arch_db:payroll.report_contributionregister
@@ -153,12 +220,10 @@ msgstr "<strong>Suma</strong>"
 #: model_terms:ir.actions.act_window,help:payroll.hr_contribution_register_action
 msgid ""
 "A contribution register is a third party involved in the salary\n"
-"            payment of the employees. It can be the social security, the\n"
-"            state or anyone that collect or inject money on payslips."
+"                payment of the employees. It can be the social security, "
+"the\n"
+"                state or anyone that collect or inject money on payslips."
 msgstr ""
-"Įmokų registras yra trečioji šalis, įtraukta į atlyginimo\n"
-"mokėjimą darbuotojams. Tai gali būti socialinis draudimas,\n"
-"valstybė ar bet kas, kad surenka ar įdeda pinigus į algalapius."
 
 #. module: payroll
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
@@ -172,10 +237,45 @@ msgid "Accounting Information"
 msgstr "Apskaitos informacija"
 
 #. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_change_state__state
+msgid "Action"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__message_needaction
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__active
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__active
 msgid "Active"
 msgstr "Aktyvus"
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__activity_ids
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__activity_exception_decoration
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__activity_state
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__activity_type_icon
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
 
 #. module: payroll
 #: model_terms:ir.actions.act_window,help:payroll.hr_contribution_register_action
@@ -188,14 +288,19 @@ msgid "Add an internal note..."
 msgstr "Pridėti vidinę pastabą..."
 
 #. module: payroll
-#: model_terms:ir.ui.view,arch_db:payroll.hr_contract_advantage_template_view_form
-msgid "Advantage Name"
-msgstr "Priedo pavadinimas"
-
-#. module: payroll
 #: model:ir.actions.act_window,name:payroll.act_children_salary_rules
 msgid "All Children Rules"
 msgstr "Visos dukterinės taisyklės"
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__allow_cancel_payslips
+msgid "Allow Cancel Payslips"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_res_config_settings__allow_cancel_payslips
+msgid "Allow cancel confirmed payslips"
+msgstr ""
 
 #. module: payroll
 #: model:hr.salary.rule.category,name:payroll.ALW
@@ -216,6 +321,11 @@ msgstr "Visada teigiamas"
 #: model_terms:ir.ui.view,arch_db:payroll.report_payslipdetails
 msgid "Amount"
 msgstr "Kiekis"
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_input__amount_qty
+msgid "Amount Quantity"
+msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__amount_select
@@ -246,6 +356,12 @@ msgstr ""
 "sąlyga, kaip pvz., bazinis > 1000."
 
 #. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__message_attachment_count
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: payroll
 #: model:hr.salary.rule.category,name:payroll.BASIC
 msgid "Basic"
 msgstr "Bazinis"
@@ -254,6 +370,11 @@ msgstr "Bazinis"
 #: model:hr.salary.rule,name:payroll.hr_rule_basic
 msgid "Basic Salary"
 msgstr "Bazinis atlyginimas"
+
+#. module: payroll
+#: model:ir.actions.act_window,name:payroll.action_get_batch_payslip_lines
+msgid "Batch Payslip Lines"
+msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields.selection,name:payroll.selection__hr_contract__schedule_pay__bi-monthly
@@ -271,11 +392,13 @@ msgid "Calculations"
 msgstr "Skaičiavimai"
 
 #. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_change_state_form
 #: model_terms:ir.ui.view,arch_db:payroll.view_payslip_lines_contribution_register
 msgid "Cancel"
 msgstr "Atšaukti"
 
 #. module: payroll
+#: model:ir.model.fields.selection,name:payroll.selection__hr_payslip_change_state__state__cancel
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
 msgid "Cancel Payslip"
 msgstr "Atšaukti algalapį"
@@ -294,15 +417,56 @@ msgid "Category"
 msgstr "Kategorija"
 
 #. module: payroll
+#: model:ir.actions.act_window,name:payroll.action_hr_payslip_change_state_form
+#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_change_state_form
+msgid "Change state"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model,name:payroll.model_hr_payslip_change_state
+msgid "Change state of a payslip"
+msgstr ""
+
+#. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_line_view_form
+msgid "Child Line Details"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__child_ids
+msgid "Child Payslip Lines"
+msgstr ""
+
+#. module: payroll
 #: model_terms:ir.ui.view,arch_db:payroll.hr_salary_rule_view_form
 msgid "Child Rules"
 msgstr "Dukterinės taisyklės"
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__child_ids
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__child_ids
 msgid "Child Salary Rule"
 msgstr "Dukterinės atlyginimo taisyklės"
+
+#. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_line_view_form
+msgid "Child Salary Structure"
+msgstr ""
+
+#. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_salary_rule_view_form
+msgid ""
+"Child rule functionality is useful when you need other rules to be computed "
+"before the parent one. <br/>\n"
+"                                This means that all salary rules declared as "
+"childs (parent of one rule) will be added to the computation\n"
+"                                if its parent rule is included in the salary "
+"structure. So child rules will only be computed if it's parent is\n"
+"                                computed. <br/>\n"
+"                                This functionality is useful for doing "
+"auxiliar calculations that are used as dependencies for the parent\n"
+"                                salary rule (e.x. rules required for complex "
+"tax computation that needs data from several modules)."
+msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payroll_structure__children_ids
@@ -322,11 +486,12 @@ msgid "Close"
 msgstr "Uždaryti"
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_contract_advantage_template__code
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_input__code
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__code
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_worked_days__code
 #: model:ir.model.fields,field_description:payroll.field_hr_rule_input__code
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter__code
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter_value__code
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__code
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule_category__code
 #: model_terms:ir.ui.view,arch_db:payroll.report_contributionregister
@@ -351,6 +516,8 @@ msgstr "Įmonės"
 #: model:ir.model.fields,field_description:payroll.field_hr_payroll_structure__company_id
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__company_id
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__company_id
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter__company_id
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter_value__company_id
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__company_id
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule_category__company_id
 msgid "Company"
@@ -368,6 +535,12 @@ msgid "Computation"
 msgstr "Apskaičiavimas"
 
 #. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__compute_date
+msgid "Compute Date"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields.selection,name:payroll.selection__hr_payslip_change_state__state__verify
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
 msgid "Compute Sheet"
 msgstr "Skaičiuoti lapą"
@@ -377,6 +550,11 @@ msgstr "Skaičiuoti lapą"
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__condition_select
 msgid "Condition Based on"
 msgstr "Sąlyga, paremta"
+
+#. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_salary_rule_view_form
+msgid "Condition Range"
+msgstr ""
 
 #. module: payroll
 #: model_terms:ir.ui.view,arch_db:payroll.hr_salary_rule_view_form
@@ -394,6 +572,7 @@ msgid "Configuration"
 msgstr "Konfigūracija"
 
 #. module: payroll
+#: model:ir.model.fields.selection,name:payroll.selection__hr_payslip_change_state__state__done
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
 msgid "Confirm"
 msgstr "Patvirtinta"
@@ -405,12 +584,6 @@ msgstr "Patvirtinta"
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_worked_days__contract_id
 msgid "Contract"
 msgstr "Sutartis"
-
-#. module: payroll
-#: model:ir.actions.act_window,name:payroll.hr_contract_advantage_template_action
-#: model:ir.ui.menu,name:payroll.hr_contract_advantage_template_menu_action
-msgid "Contract Advantage Templates"
-msgstr "Sutarties priedų šablonai"
 
 #. module: payroll
 #: model_terms:ir.ui.view,arch_db:payroll.hr_contribution_register_view_form
@@ -449,16 +622,24 @@ msgid "Conveyance Allowance For Marc Demo"
 msgstr ""
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_contract_advantage_template__create_uid
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter__country_id
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter_value__country_id
+msgid "Country"
+msgstr ""
+
+#. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_contribution_register__create_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_payroll_structure__create_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__create_uid
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_change_state__create_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_employees__create_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_input__create_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__create_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__create_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_worked_days__create_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_rule_input__create_uid
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter__create_uid
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter_value__create_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__create_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule_category__create_uid
 #: model:ir.model.fields,field_description:payroll.field_payslip_lines_contribution_register__create_uid
@@ -466,16 +647,18 @@ msgid "Created by"
 msgstr "Sukūrė"
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_contract_advantage_template__create_date
 #: model:ir.model.fields,field_description:payroll.field_hr_contribution_register__create_date
 #: model:ir.model.fields,field_description:payroll.field_hr_payroll_structure__create_date
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__create_date
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_change_state__create_date
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_employees__create_date
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_input__create_date
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__create_date
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__create_date
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_worked_days__create_date
 #: model:ir.model.fields,field_description:payroll.field_hr_rule_input__create_date
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter__create_date
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter_value__create_date
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__create_date
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule_category__create_date
 #: model:ir.model.fields,field_description:payroll.field_payslip_lines_contribution_register__create_date
@@ -489,8 +672,15 @@ msgid "Credit Note"
 msgstr "Kreditinė sąskaita"
 
 #. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_search
+msgid "Date"
+msgstr ""
+
+#. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__date_from
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__date_from
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__date_start
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter_value__date_from
 #: model:ir.model.fields,field_description:payroll.field_payslip_lines_contribution_register__date_from
 msgid "Date From"
 msgstr "Nuo"
@@ -508,14 +698,18 @@ msgid "Deduction"
 msgstr "Sumažinimas"
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_contract_advantage_template__default_value
-msgid "Default value for this advantage"
-msgstr "Numatytoji šio priedo reikšmė"
-
-#. module: payroll
 #: model:ir.model.fields,help:payroll.field_hr_contract__schedule_pay
 msgid "Defines the frequency of the wage payment."
 msgstr "Nurodo atlyginimo išmokėjimo dažnumą."
+
+#. module: payroll
+#: model:ir.model.fields,help:payroll.field_hr_payslip_run__struct_id
+msgid ""
+"Defines the rules that have to be applied to this payslip batch, accordingly "
+"to the contract chosen. If you let empty the field contract, this field "
+"isn't mandatory anymore and thus the rules applied will be all the rules set "
+"on the structure of all contracts of the employee valid for the chosen period"
+msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,help:payroll.field_hr_payslip__struct_id
@@ -538,17 +732,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__note
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_worked_days__name
 #: model:ir.model.fields,field_description:payroll.field_hr_rule_input__name
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter__description
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__note
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule_category__note
 #: model_terms:ir.ui.view,arch_db:payroll.hr_contribution_register_view_form
-#: model_terms:ir.ui.view,arch_db:payroll.hr_salary_rule_view_form
+#: model_terms:ir.ui.view,arch_db:payroll.hr_rule_parameter_view_form
 msgid "Description"
 msgstr "Aprašymas"
-
-#. module: payroll
-#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
-msgid "Details By Salary Rule Category"
-msgstr "Duomenys pagal atlyginimo taisyklės kategoriją"
 
 #. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__details_by_salary_rule_category
@@ -557,23 +747,33 @@ msgid "Details by Salary Rule Category"
 msgstr "Duomenys pagal atlyginimo taisyklės kategoriją"
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_contract_advantage_template__display_name
+#: model:ir.model.fields,field_description:payroll.field_hr_contract__display_name
 #: model:ir.model.fields,field_description:payroll.field_hr_contribution_register__display_name
+#: model:ir.model.fields,field_description:payroll.field_hr_employee__display_name
 #: model:ir.model.fields,field_description:payroll.field_hr_payroll_structure__display_name
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__display_name
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_change_state__display_name
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_employees__display_name
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_input__display_name
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__display_name
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__display_name
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_worked_days__display_name
 #: model:ir.model.fields,field_description:payroll.field_hr_rule_input__display_name
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter__display_name
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter_value__display_name
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__display_name
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule_category__display_name
 #: model:ir.model.fields,field_description:payroll.field_payslip_lines_contribution_register__display_name
 #: model:ir.model.fields,field_description:payroll.field_report_payroll_report_contributionregister__display_name
 #: model:ir.model.fields,field_description:payroll.field_report_payroll_report_payslipdetails__display_name
+#: model:ir.model.fields,field_description:payroll.field_res_config_settings__display_name
 msgid "Display Name"
 msgstr "Rodomas pavadinimas"
+
+#. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.res_config_settings_view_form
+msgid "Display non-negative values for leaves in payslip worked days lines."
+msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields.selection,name:payroll.selection__hr_payslip__state__done
@@ -606,9 +806,9 @@ msgid "Draft Payslip Batches"
 msgstr "Algalapių suvestinių juodraščiai"
 
 #. module: payroll
-#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_search
-msgid "Draft Slip"
-msgstr "Algalapių juodraščiai"
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__dynamic_filtered_payslip_lines
+msgid "Dynamic Filtered Payslip Lines"
+msgstr ""
 
 #. module: payroll
 #: model:ir.model,name:payroll.model_hr_employee
@@ -634,11 +834,6 @@ msgstr "Darbuotojo funkcija"
 #: model:ir.ui.menu,name:payroll.hr_payslip_menu
 msgid "Employee Payslips"
 msgstr "Darbuotojų algalapiai"
-
-#. module: payroll
-#: model:ir.model,name:payroll.model_hr_contract_advantage_template
-msgid "Employee's Advantage on Contract"
-msgstr "Darbuotojo priedas sutartyje"
 
 #. module: payroll
 #: model:ir.model.fields,help:payroll.field_hr_contract__resource_calendar_id
@@ -676,12 +871,41 @@ msgid "Eventual third party involved in the salary payment of the employees."
 msgstr "Trečiąjai šaliai mokama įmoka nuo darbuotojo atlyginimo."
 
 #. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_change_state_form
+msgid "Execute"
+msgstr ""
+
+#. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__amount_fix
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__amount_fix
 #: model:ir.model.fields.selection,name:payroll.selection__hr_payslip_line__amount_select__fix
 #: model:ir.model.fields.selection,name:payroll.selection__hr_salary_rule__amount_select__fix
 msgid "Fixed Amount"
 msgstr "Fiksuota suma"
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__message_follower_ids
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__message_channel_ids
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__message_partner_ids
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,help:payroll.field_hr_payslip__activity_type_icon
+#: model:ir.model.fields,help:payroll.field_hr_payslip_run__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,help:payroll.field_hr_payslip_line__amount_percentage
@@ -741,28 +965,80 @@ msgid "Group By"
 msgstr "Grupuoti pagal"
 
 #. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__hide_child_lines
+msgid "Hide Child Lines"
+msgstr ""
+
+#. module: payroll
 #: model:hr.salary.rule,name:payroll.hr_salary_rule_houserentallowance1
 msgid "House Rent Allowance"
 msgstr "Nuomos išlaidos"
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_contract_advantage_template__id
+#: model:ir.model.fields,field_description:payroll.field_hr_contract__id
 #: model:ir.model.fields,field_description:payroll.field_hr_contribution_register__id
+#: model:ir.model.fields,field_description:payroll.field_hr_employee__id
 #: model:ir.model.fields,field_description:payroll.field_hr_payroll_structure__id
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__id
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_change_state__id
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_employees__id
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_input__id
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__id
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__id
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_worked_days__id
 #: model:ir.model.fields,field_description:payroll.field_hr_rule_input__id
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter__id
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter_value__id
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__id
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule_category__id
 #: model:ir.model.fields,field_description:payroll.field_payslip_lines_contribution_register__id
 #: model:ir.model.fields,field_description:payroll.field_report_payroll_report_contributionregister__id
 #: model:ir.model.fields,field_description:payroll.field_report_payroll_report_payslipdetails__id
+#: model:ir.model.fields,field_description:payroll.field_res_config_settings__id
 msgid "ID"
 msgstr "ID"
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__activity_exception_icon
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,help:payroll.field_hr_payslip__activity_exception_icon
+#: model:ir.model.fields,help:payroll.field_hr_payslip_run__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,help:payroll.field_hr_payslip__message_needaction
+#: model:ir.model.fields,help:payroll.field_hr_payslip__message_unread
+#: model:ir.model.fields,help:payroll.field_hr_payslip_run__message_needaction
+#: model:ir.model.fields,help:payroll.field_hr_payslip_run__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,help:payroll.field_hr_payslip__message_has_error
+#: model:ir.model.fields,help:payroll.field_hr_payslip__message_has_sms_error
+#: model:ir.model.fields,help:payroll.field_hr_payslip_run__message_has_error
+#: model:ir.model.fields,help:payroll.field_hr_payslip_run__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.res_config_settings_view_form
+msgid ""
+"If enabled, confirmed payslips can be canceled by the user. Default: Not "
+"enabled."
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,help:payroll.field_res_config_settings__allow_cancel_payslips
+msgid ""
+"If enabled, it allow the user to cancel confirmed payslips. Default: Not "
+"Enabled"
+msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,help:payroll.field_hr_payslip_run__credit_note
@@ -807,9 +1083,20 @@ msgid "Internal Note"
 msgstr "Vidinė pastaba"
 
 #. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__message_is_follower
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: payroll
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_run_view_kanban
 msgid "Is a Blocking Reason?"
 msgstr "Yra blokavimo priežastis?"
+
+#. module: payroll
+#: model:ir.model.fields,help:payroll.field_hr_payslip_input__amount_qty
+msgid "It can be used in computation for other inputs"
+msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,help:payroll.field_hr_salary_rule__quantity
@@ -834,35 +1121,42 @@ msgstr ""
 "amount * contract.wage*0.01."
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_contract_advantage_template____last_update
+#: model:ir.model.fields,field_description:payroll.field_hr_contract____last_update
 #: model:ir.model.fields,field_description:payroll.field_hr_contribution_register____last_update
+#: model:ir.model.fields,field_description:payroll.field_hr_employee____last_update
 #: model:ir.model.fields,field_description:payroll.field_hr_payroll_structure____last_update
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip____last_update
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_change_state____last_update
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_employees____last_update
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_input____last_update
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line____last_update
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_run____last_update
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_worked_days____last_update
 #: model:ir.model.fields,field_description:payroll.field_hr_rule_input____last_update
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter____last_update
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter_value____last_update
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule____last_update
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule_category____last_update
 #: model:ir.model.fields,field_description:payroll.field_payslip_lines_contribution_register____last_update
 #: model:ir.model.fields,field_description:payroll.field_report_payroll_report_contributionregister____last_update
 #: model:ir.model.fields,field_description:payroll.field_report_payroll_report_payslipdetails____last_update
+#: model:ir.model.fields,field_description:payroll.field_res_config_settings____last_update
 msgid "Last Modified on"
 msgstr "Paskutinį kartą keista"
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_contract_advantage_template__write_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_contribution_register__write_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_payroll_structure__write_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__write_uid
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_change_state__write_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_employees__write_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_input__write_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__write_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__write_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_worked_days__write_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_rule_input__write_uid
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter__write_uid
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter_value__write_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__write_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule_category__write_uid
 #: model:ir.model.fields,field_description:payroll.field_payslip_lines_contribution_register__write_uid
@@ -870,21 +1164,28 @@ msgid "Last Updated by"
 msgstr "Paskutinį kartą atnaujino"
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_contract_advantage_template__write_date
 #: model:ir.model.fields,field_description:payroll.field_hr_contribution_register__write_date
 #: model:ir.model.fields,field_description:payroll.field_hr_payroll_structure__write_date
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__write_date
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_change_state__write_date
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_employees__write_date
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_input__write_date
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__write_date
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__write_date
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_worked_days__write_date
 #: model:ir.model.fields,field_description:payroll.field_hr_rule_input__write_date
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter__write_date
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter_value__write_date
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__write_date
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule_category__write_date
 #: model:ir.model.fields,field_description:payroll.field_payslip_lines_contribution_register__write_date
 msgid "Last Updated on"
 msgstr "Paskutinį kartą atnaujinta"
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_res_config_settings__leaves_positive
+msgid "Leaves with positive values"
+msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,help:payroll.field_hr_salary_rule_category__parent_id
@@ -896,19 +1197,15 @@ msgstr ""
 "tik ataskaitose."
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_contract_advantage_template__lower_bound
-msgid "Lower Bound"
-msgstr "Apatinė riba"
-
-#. module: payroll
-#: model:ir.model.fields,help:payroll.field_hr_contract_advantage_template__lower_bound
-msgid "Lower bound authorized by the employer for this advantage"
-msgstr "Darbdavio patvirtinta apatinė šio priedo riba"
-
-#. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__paid
 msgid "Made Payment Order ? "
 msgstr "Atliktas mokėjimo užsakymas ?"
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__message_main_attachment_id
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
 
 #. module: payroll
 #: model:ir.module.category,description:payroll.module_category_payroll
@@ -932,10 +1229,27 @@ msgid "Meal Voucher"
 msgstr "Maisto kuponas"
 
 #. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__message_has_error
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__message_ids
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__condition_range_min
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__condition_range_min
 msgid "Minimum Range"
 msgstr "Mažiausias intervalas"
+
+#. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.res_config_settings_view_form
+msgid "Misc Functionalities"
+msgstr ""
 
 #. module: payroll
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
@@ -948,11 +1262,17 @@ msgid "Monthly"
 msgstr "Kas mėnesį"
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_contract_advantage_template__name
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__my_activity_date_deadline
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_contribution_register__name
 #: model:ir.model.fields,field_description:payroll.field_hr_payroll_structure__name
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__name
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__name
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter__name
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__name
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule_category__name
 #: model_terms:ir.ui.view,arch_db:payroll.report_contributionregister
@@ -972,6 +1292,30 @@ msgid "Net Salary"
 msgstr "Atlyginimas atskaičius mokesčius"
 
 #. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__activity_date_deadline
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__activity_summary
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__activity_type_id
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: payroll
+#: code:addons/payroll/models/hr_rule_parameter.py:0
+#, python-format
+msgid "No rule parameter with code '%s' was found for %s "
+msgstr ""
+
+#. module: payroll
 #: code:addons/payroll/models/hr_payslip.py:0
 #, python-format
 msgid "Normal Working Days paid at 100%"
@@ -979,8 +1323,15 @@ msgstr "Įprastos darbo dienos, apmokamos 100%"
 
 #. module: payroll
 #: model_terms:ir.ui.view,arch_db:payroll.hr_salary_rule_category_view_form
+#: model_terms:ir.ui.view,arch_db:payroll.hr_salary_rule_view_form
 msgid "Notes"
 msgstr "Pastabos"
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__message_needaction_counter
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_worked_days__number_of_days
@@ -993,9 +1344,54 @@ msgid "Number of Hours"
 msgstr "Valandų skaičius"
 
 #. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__message_has_error_counter
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,help:payroll.field_hr_payslip__message_needaction_counter
+#: model:ir.model.fields,help:payroll.field_hr_payslip_run__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,help:payroll.field_hr_payslip__message_has_error_counter
+#: model:ir.model.fields,help:payroll.field_hr_payslip_run__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,help:payroll.field_hr_payslip__message_unread_counter
+#: model:ir.model.fields,help:payroll.field_hr_payslip_run__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: payroll
 #: model:res.groups,name:payroll.group_payroll_user
 msgid "Officer"
 msgstr "Vadovas"
+
+#. module: payroll
+#: code:addons/payroll/wizard/hr_payslip_change_state.py:0
+#, python-format
+msgid "Only draft payslips can be verified,the payslip %s is in %s state"
+msgstr ""
+
+#. module: payroll
+#: code:addons/payroll/wizard/hr_payslip_change_state.py:0
+#, python-format
+msgid ""
+"Only payslips in states verify or draft can be confirmed, the payslip %s is "
+"in %s state"
+msgstr ""
+
+#. module: payroll
+#: code:addons/payroll/wizard/hr_payslip_change_state.py:0
+#, python-format
+msgid ""
+"Only rejected payslips can be reset to draft, the payslip %s is in %s state"
+msgstr ""
 
 #. module: payroll
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
@@ -1003,10 +1399,20 @@ msgid "Other Inputs"
 msgstr "Kiti priskaitymai"
 
 #. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter_value__parameter_value
+msgid "Parameter Value"
+msgstr ""
+
+#. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payroll_structure__parent_id
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule_category__parent_id
 msgid "Parent"
 msgstr "Tėvinis"
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__parent_line_id
+msgid "Parent Payslip Line"
+msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__parent_rule_id
@@ -1020,7 +1426,6 @@ msgid "Partner"
 msgstr "Partneris"
 
 #. module: payroll
-#: model:ir.model,name:payroll.model_hr_payslip
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_input__payslip_id
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__slip_id
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_worked_days__payslip_id
@@ -1045,9 +1450,9 @@ msgid "PaySlip Lines"
 msgstr "Algalapio eilutės"
 
 #. module: payroll
-#: model:ir.actions.report,name:payroll.action_contribution_register
-msgid "PaySlip Lines By Conribution Register"
-msgstr "Algalapio eilutės pagal įmokų registrą"
+#: model:ir.actions.report,print_report_name:payroll.action_contribution_register
+msgid "PaySlip Lines By Contribution Register"
+msgstr ""
 
 #. module: payroll
 #: model_terms:ir.ui.view,arch_db:payroll.report_contributionregister
@@ -1089,6 +1494,7 @@ msgstr "Algalapių struktūros"
 
 #. module: payroll
 #: model:ir.actions.report,name:payroll.action_report_payslip
+#: model:ir.model,name:payroll.model_hr_payslip
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
 msgid "Payslip"
 msgstr "Algalapis"
@@ -1097,6 +1503,11 @@ msgstr "Algalapis"
 #: code:addons/payroll/models/hr_payslip.py:0
 #, python-format
 msgid "Payslip 'Date From' must be earlier than 'Date To'."
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__payslip_run_id
+msgid "Payslip Batch"
 msgstr ""
 
 #. module: payroll
@@ -1141,7 +1552,13 @@ msgid "Payslip Line"
 msgstr "Algalapio eilutė"
 
 #. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_line_view_form
+msgid "Payslip Line Details"
+msgstr ""
+
+#. module: payroll
 #: model:ir.actions.act_window,name:payroll.hr_payslip_line_action
+#: model:ir.actions.report,name:payroll.action_contribution_register
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__line_ids
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_line_view_search
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
@@ -1170,6 +1587,13 @@ msgid "Payslip Worked Days"
 msgstr "Išdirbtų dienų algalapis"
 
 #. module: payroll
+#: model:mail.template,subject:payroll.mail_template_hr_payslip
+msgid ""
+"Payslip for ${object.payslip_run_id.name} from ${object.company_id.name}"
+msgstr ""
+
+#. module: payroll
+#: code:addons/payroll/wizard/hr_payslip_change_state.py:0
 #: model:ir.actions.act_window,name:payroll.hr_payslip_action_employee
 #: model:ir.model.fields,field_description:payroll.field_hr_employee__slip_ids
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__slip_ids
@@ -1177,6 +1601,7 @@ msgstr "Išdirbtų dienų algalapis"
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_run_view_form
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_search
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_tree
+#, python-format
 msgid "Payslips"
 msgstr "Algalapiai"
 
@@ -1192,6 +1617,11 @@ msgstr "Algalapių suvestinės"
 #: model_terms:ir.ui.view,arch_db:payroll.view_hr_payslip_by_employees
 msgid "Payslips by Employees"
 msgstr "Algalapiai pagal darbuotojus"
+
+#. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_search
+msgid "Pending Review"
+msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__amount_percentage
@@ -1236,6 +1666,7 @@ msgstr "Investicinis fondas"
 #. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__amount_python_compute
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__amount_python_compute
+#: model:ir.model.fields,help:payroll.field_hr_rule_parameter_value__parameter_value
 #: model:ir.model.fields.selection,name:payroll.selection__hr_payslip_line__amount_select__code
 #: model:ir.model.fields.selection,name:payroll.selection__hr_salary_rule__amount_select__code
 msgid "Python Code"
@@ -1293,10 +1724,21 @@ msgid "Rate (%)"
 msgstr "Koeficientas (%)"
 
 #. module: payroll
+#: code:addons/payroll/models/hr_payslip_line.py:0
+#, python-format
+msgid "Recursion error. Only one line should be parent of %s"
+msgstr ""
+
+#. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payroll_structure__code
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__number
 msgid "Reference"
 msgstr "Numeris"
+
+#. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
+msgid "Refetch Payslip Data"
+msgstr ""
 
 #. module: payroll
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
@@ -1306,7 +1748,23 @@ msgstr "Grąžinimas"
 #. module: payroll
 #: code:addons/payroll/models/hr_payslip.py:0
 #, python-format
+msgid "Refund Payslip"
+msgstr ""
+
+#. module: payroll
+#: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
 msgid "Refund: %s"
+msgstr ""
+
+#. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_search
+msgid "Refunded"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__refunded_id
+msgid "Refunded Payslip"
 msgstr ""
 
 #. module: payroll
@@ -1320,9 +1778,31 @@ msgid "Rejected"
 msgstr "Atmesta"
 
 #. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__activity_user_id
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__salary_rule_id
 msgid "Rule"
 msgstr "Taisyklė"
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter_value__rule_parameter_id
+msgid "Rule Parameter"
+msgstr ""
+
+#. module: payroll
+#: model:ir.ui.menu,name:payroll.menu_action_hr_salary_rule_parameter
+msgid "Rule Parameters"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__message_has_sms_error
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
 
 #. module: payroll
 #: model_terms:ir.ui.view,arch_db:payroll.hr_salary_rule_category_view_form
@@ -1361,6 +1841,22 @@ msgid "Salary Rule Input"
 msgstr "Atlyginimo taisyklės priskaitymas"
 
 #. module: payroll
+#: model:ir.model,name:payroll.model_hr_rule_parameter
+#: model_terms:ir.ui.view,arch_db:payroll.hr_rule_parameter_view_form
+msgid "Salary Rule Parameter"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model,name:payroll.model_hr_rule_parameter_value
+msgid "Salary Rule Parameter Value"
+msgstr ""
+
+#. module: payroll
+#: model:ir.actions.act_window,name:payroll.hr_rule_parameter_action
+msgid "Salary Rule Parameters"
+msgstr ""
+
+#. module: payroll
 #: model:ir.actions.act_window,name:payroll.action_salary_rule_form
 #: model:ir.model.fields,field_description:payroll.field_hr_payroll_structure__rule_ids
 #: model:ir.ui.menu,name:payroll.menu_action_hr_salary_rule_form
@@ -1394,6 +1890,11 @@ msgid "Salary Structures"
 msgstr "Atlyginimo struktūros"
 
 #. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
+msgid "Salary rules apearing on payslip"
+msgstr ""
+
+#. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_contract__schedule_pay
 msgid "Scheduled Pay"
 msgstr "Suplanuotas mokėjimas"
@@ -1424,6 +1925,11 @@ msgid "Semi-annually"
 msgstr "Kas pusmetį"
 
 #. module: payroll
+#: model:ir.actions.act_window,name:payroll.action_partner_mass_mail
+msgid "Send email with payslip"
+msgstr ""
+
+#. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_input__sequence
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__sequence
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_worked_days__sequence
@@ -1432,6 +1938,7 @@ msgid "Sequence"
 msgstr "Seka"
 
 #. module: payroll
+#: model:ir.model.fields.selection,name:payroll.selection__hr_payslip_change_state__state__draft
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_run_view_form
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
 msgid "Set to Draft"
@@ -1455,7 +1962,18 @@ msgid "Status"
 msgstr "Būsena"
 
 #. module: payroll
+#: model:ir.model.fields,help:payroll.field_hr_payslip__activity_state
+#: model:ir.model.fields,help:payroll.field_hr_payslip_run__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__struct_id
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__struct_id
 msgid "Structure"
 msgstr "Struktūra"
 
@@ -1501,6 +2019,12 @@ msgid "The minimum amount, applied for this rule."
 msgstr "Didžiausias kiekis, taikomas šiai taisyklei."
 
 #. module: payroll
+#: code:addons/payroll/wizard/hr_payslip_change_state.py:0
+#, python-format
+msgid "The payslip %s is already canceled please deselect it"
+msgstr ""
+
+#. module: payroll
 #: model:ir.model.fields,help:payroll.field_hr_payslip_line__condition_range
 #: model:ir.model.fields,help:payroll.field_hr_salary_rule__condition_range
 msgid ""
@@ -1514,6 +2038,14 @@ msgstr ""
 "t.t.)."
 
 #. module: payroll
+#: code:addons/payroll/models/hr_payslip.py:0
+#, python-format
+msgid ""
+"To cancel the Original Payslip the\n"
+"                        Refunded Payslip needs to be canceled first!"
+msgstr ""
+
+#. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__total
 #: model_terms:ir.ui.view,arch_db:payroll.report_contributionregister
 #: model_terms:ir.ui.view,arch_db:payroll.report_payslip
@@ -1522,19 +2054,32 @@ msgid "Total"
 msgstr "Viso"
 
 #. module: payroll
-#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
-msgid "Total Working Days"
-msgstr "Viso darbo dienų"
+#: model:ir.model.constraint,message:payroll.constraint_hr_rule_parameter__unique
+msgid "Two rule parameters cannot have the same code."
+msgstr ""
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_contract_advantage_template__upper_bound
-msgid "Upper Bound"
-msgstr "Viršutinė riba"
+#: model:ir.model.constraint,message:payroll.constraint_hr_rule_parameter_value__unique
+msgid "Two rules parameters with the same code cannot start the same day"
+msgstr ""
 
 #. module: payroll
-#: model:ir.model.fields,help:payroll.field_hr_contract_advantage_template__upper_bound
-msgid "Upper bound authorized by the employer for this advantage"
-msgstr "Darbdavio patvirtinta viršutinė šio priedo riba"
+#: model:ir.model.fields,help:payroll.field_hr_payslip__activity_exception_decoration
+#: model:ir.model.fields,help:payroll.field_hr_payslip_run__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__message_unread
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__message_unread_counter
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,help:payroll.field_hr_payslip_line__sequence
@@ -1549,9 +2094,34 @@ msgid "Used to display the salary rule on payslip."
 msgstr "Naudojama atlyginimo taisyklės rodymui algalapyje."
 
 #. module: payroll
+#: model:ir.model.fields,help:payroll.field_res_config_settings__leaves_positive
+msgid ""
+"Values for leaves (days and hours fields) should be positive instead of "
+"negative."
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_rule_parameter__parameter_version_ids
+#: model_terms:ir.ui.view,arch_db:payroll.hr_rule_parameter_view_form
+msgid "Versions"
+msgstr ""
+
+#. module: payroll
 #: model:ir.model.fields.selection,name:payroll.selection__hr_payslip__state__verify
 msgid "Waiting"
 msgstr "Laukia"
+
+#. module: payroll
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip__website_message_ids
+#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: payroll
+#: model:ir.model.fields,help:payroll.field_hr_payslip__website_message_ids
+#: model:ir.model.fields,help:payroll.field_hr_payslip_run__website_message_ids
+msgid "Website communication history"
+msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields.selection,name:payroll.selection__hr_contract__schedule_pay__weekly
@@ -1579,24 +2149,17 @@ msgid "Working Schedule"
 msgstr "Darbo grafikas"
 
 #. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_salary_rule_view_form
+msgid "Write salary rule notes or observations here..."
+msgstr ""
+
+#. module: payroll
 #: code:addons/payroll/models/hr_salary_rule.py:0
 #, python-format
 msgid "Wrong percentage base or quantity defined for salary rule %s (%s)."
 msgstr ""
 "Neteisinga procentinė bazė arba kiekis, nustatytas pagal atlyginimo taisyklę "
 "%s (%s)."
-
-#. module: payroll
-#: code:addons/payroll/models/hr_salary_rule.py:0
-#, python-format
-msgid "Wrong python code defined for salary rule %s (%s)."
-msgstr "Neteisingas Python kodas, nurodytas atlyginimo taisyklei %s (%s)."
-
-#. module: payroll
-#: code:addons/payroll/models/hr_salary_rule.py:0
-#, python-format
-msgid "Wrong python condition defined for salary rule %s (%s)."
-msgstr "Neteisinga Python sąlyga, nurodyta atlyginimo taisyklei %s (%s)."
 
 #. module: payroll
 #: code:addons/payroll/models/hr_salary_rule.py:0
@@ -1640,6 +2203,71 @@ msgstr "Norėdami sukurti algalapio eilutę, turite nustatyti sutartį."
 #: model:ir.model.fields,help:payroll.field_hr_salary_rule__amount_percentage_base
 msgid "result will be affected to a variable"
 msgstr "rezultatas bus paveiktas kintamojo"
+
+#. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_line_view_form
+msgid "total_net"
+msgstr ""
+
+#~ msgid "Draft Slip"
+#~ msgstr "Algalapių juodraščiai"
+
+#~ msgid "Total Working Days"
+#~ msgstr "Viso darbo dienų"
+
+#~ msgid "Details By Salary Rule Category"
+#~ msgstr "Duomenys pagal atlyginimo taisyklės kategoriją"
+
+#~ msgid "Advantage Name"
+#~ msgstr "Priedo pavadinimas"
+
+#~ msgid "Contract Advantage Templates"
+#~ msgstr "Sutarties priedų šablonai"
+
+#~ msgid "Default value for this advantage"
+#~ msgstr "Numatytoji šio priedo reikšmė"
+
+#~ msgid "Employee's Advantage on Contract"
+#~ msgstr "Darbuotojo priedas sutartyje"
+
+#~ msgid "Lower Bound"
+#~ msgstr "Apatinė riba"
+
+#~ msgid "Lower bound authorized by the employer for this advantage"
+#~ msgstr "Darbdavio patvirtinta apatinė šio priedo riba"
+
+#~ msgid "Upper Bound"
+#~ msgstr "Viršutinė riba"
+
+#~ msgid "Upper bound authorized by the employer for this advantage"
+#~ msgstr "Darbdavio patvirtinta viršutinė šio priedo riba"
+
+#~ msgid "Wrong python code defined for salary rule %s (%s)."
+#~ msgstr "Neteisingas Python kodas, nurodytas atlyginimo taisyklei %s (%s)."
+
+#~ msgid "Wrong python condition defined for salary rule %s (%s)."
+#~ msgstr "Neteisinga Python sąlyga, nurodyta atlyginimo taisyklei %s (%s)."
+
+#~ msgid ""
+#~ "<span colspan=\"4\" nolabel=\"1\">This wizard will generate payslips for "
+#~ "all selected employee(s) based on the dates and credit note specified on "
+#~ "Payslips Run.</span>"
+#~ msgstr ""
+#~ "<span colspan=\"4\" nolabel=\"1\">Šis vedlys sugeneruos algalapius "
+#~ "visiems pasirinktiems darbuotojams pagal datas ir algalapių veikime "
+#~ "nurodytas kreditines sąskaitas.</span>"
+
+#~ msgid ""
+#~ "A contribution register is a third party involved in the salary\n"
+#~ "            payment of the employees. It can be the social security, the\n"
+#~ "            state or anyone that collect or inject money on payslips."
+#~ msgstr ""
+#~ "Įmokų registras yra trečioji šalis, įtraukta į atlyginimo\n"
+#~ "mokėjimą darbuotojams. Tai gali būti socialinis draudimas,\n"
+#~ "valstybė ar bet kas, kad surenka ar įdeda pinigus į algalapius."
+
+#~ msgid "PaySlip Lines By Conribution Register"
+#~ msgstr "Algalapio eilutės pagal įmokų registrą"
 
 #~ msgid ""
 #~ "* When the payslip is created the status is 'Draft'\n"

@@ -45,6 +45,12 @@ msgid "Analytic Account"
 msgstr "Шинжилгээний данс"
 
 #. module: payroll_account
+#: model:ir.model.fields,field_description:payroll_account.field_hr_payslip_line__tax_base_id
+#: model:ir.model.fields,field_description:payroll_account.field_hr_salary_rule__tax_base_id
+msgid "Base"
+msgstr ""
+
+#. module: payroll_account
 #: model:ir.model.fields,field_description:payroll_account.field_hr_payslip_line__account_credit
 #: model:ir.model.fields,field_description:payroll_account.field_hr_salary_rule__account_credit
 msgid "Credit Account"
@@ -62,6 +68,16 @@ msgid "Debit Account"
 msgstr "Дебит данс"
 
 #. module: payroll_account
+#: model:ir.model.fields,field_description:payroll_account.field_hr_contract__display_name
+#: model:ir.model.fields,field_description:payroll_account.field_hr_payslip__display_name
+#: model:ir.model.fields,field_description:payroll_account.field_hr_payslip_employees__display_name
+#: model:ir.model.fields,field_description:payroll_account.field_hr_payslip_line__display_name
+#: model:ir.model.fields,field_description:payroll_account.field_hr_payslip_run__display_name
+#: model:ir.model.fields,field_description:payroll_account.field_hr_salary_rule__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: payroll_account
 #: model:ir.model,name:payroll_account.model_hr_contract
 msgid "Employee Contract"
 msgstr "Ажилтны хөдөлмөрийн гэрээ"
@@ -72,15 +88,35 @@ msgid "Generate payslips for all selected employees"
 msgstr "Бүх сонгогдсон ажилчдын цалингийн хуудас үүсгэх"
 
 #. module: payroll_account
+#: model:ir.model.fields,field_description:payroll_account.field_hr_contract__id
+#: model:ir.model.fields,field_description:payroll_account.field_hr_payslip__id
+#: model:ir.model.fields,field_description:payroll_account.field_hr_payslip_employees__id
+#: model:ir.model.fields,field_description:payroll_account.field_hr_payslip_line__id
+#: model:ir.model.fields,field_description:payroll_account.field_hr_payslip_run__id
+#: model:ir.model.fields,field_description:payroll_account.field_hr_salary_rule__id
+msgid "ID"
+msgstr ""
+
+#. module: payroll_account
 #: model:ir.model.fields,help:payroll_account.field_hr_payslip__date
 msgid "Keep empty to use the period of the validation(Payslip) date."
 msgstr ""
 "Цалингийн хуудас батламжилсан мөчлөгийг хэрэглэх бол хоосон үлдээнэ үү!"
 
 #. module: payroll_account
+#: model:ir.model.fields,field_description:payroll_account.field_hr_contract____last_update
+#: model:ir.model.fields,field_description:payroll_account.field_hr_payslip____last_update
+#: model:ir.model.fields,field_description:payroll_account.field_hr_payslip_employees____last_update
+#: model:ir.model.fields,field_description:payroll_account.field_hr_payslip_line____last_update
+#: model:ir.model.fields,field_description:payroll_account.field_hr_payslip_run____last_update
+#: model:ir.model.fields,field_description:payroll_account.field_hr_salary_rule____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: payroll_account
 #: model:ir.model,name:payroll_account.model_hr_payslip
-msgid "Pay Slip"
-msgstr "Цалингийн хуудас"
+msgid "Payslip"
+msgstr ""
 
 #. module: payroll_account
 #: model:ir.model,name:payroll_account.model_hr_payslip_run
@@ -117,6 +153,12 @@ msgid "Tax"
 msgstr "Татвар"
 
 #. module: payroll_account
+#: model:ir.model.fields,field_description:payroll_account.field_hr_payslip_line__tax_line_ids
+#: model:ir.model.fields,field_description:payroll_account.field_hr_salary_rule__tax_line_ids
+msgid "Tax lines"
+msgstr ""
+
+#. module: payroll_account
 #: code:addons/payroll_account/models/hr_payroll_account.py:0
 #, python-format
 msgid ""
@@ -129,3 +171,6 @@ msgstr "\"%s\" зардлын журналыг кредит данстай зө�
 msgid ""
 "The Expense Journal \"%s\" has not properly configured the Debit Account!"
 msgstr "\"%s\" зардлын журналыг дебит данстай зөв тохируулаагүй"
+
+#~ msgid "Pay Slip"
+#~ msgstr "Цалингийн хуудас"
