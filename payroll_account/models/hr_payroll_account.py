@@ -113,58 +113,58 @@ class HrPayslip(models.Model):
                 account_id = debit_account_id or credit_account_id
                 analytic_salary_id = line.salary_rule_id.analytic_account_id.id
 
-                tax_ids = False
-                tax_tag_ids = False
-                if line.salary_rule_id.tax_line_ids:
-                    account_tax_ids = [
-                        salary_rule_id.account_tax_id.id
-                        for salary_rule_id in line.salary_rule_id.tax_line_ids
-                    ]
-                    tax_ids = [
-                        (4, account_tax_id, 0) for account_tax_id in account_tax_ids
-                    ]
-                    tax_tag_ids = (
-                        self.env["account.tax.repartition.line"]
-                        .search(
-                            [
-                                ("invoice_tax_id", "in", account_tax_ids),
-                                ("repartition_type", "=", "base"),
-                            ]
-                        )
-                        .tag_ids
-                    )
+                #tax_ids = False
+                #tax_tag_ids = False
+                #if line.salary_rule_id.tax_line_ids:
+                #    account_tax_ids = [
+                #        salary_rule_id.account_tax_id.id
+                #        for salary_rule_id in line.salary_rule_id.tax_line_ids
+                #    ]
+                #    tax_ids = [
+                #        (4, account_tax_id, 0) for account_tax_id in account_tax_ids
+                #    ]
+                #    tax_tag_ids = (
+                #        self.env["account.tax.repartition.line"]
+                #        .search(
+                #            [
+                #                ("invoice_tax_id", "in", account_tax_ids),
+                #                ("repartition_type", "=", "base"),
+                #            ]
+                #        )
+                #        .tag_ids
+                #    )
 
-                tax_repartition_line_id = False
-                if line.salary_rule_id.account_tax_id:
-                    tax_repartition_line_id = (
-                        self.env["account.tax.repartition.line"]
-                        .search(
-                            [
-                                (
-                                    "invoice_tax_id",
-                                    "=",
-                                    line.salary_rule_id.account_tax_id.id,
-                                ),
-                                ("account_id", "=", account_id),
-                            ]
-                        )
-                        .id
-                    )
-                    tax_tag_ids = (
-                        self.env["account.tax.repartition.line"]
-                        .search(
-                            [
-                                (
-                                    "invoice_tax_id",
-                                    "=",
-                                    line.salary_rule_id.account_tax_id.id,
-                                ),
-                                ("repartition_type", "=", "tax"),
-                                ("account_id", "=", account_id),
-                            ]
-                        )
-                        .tag_ids
-                    )
+                #tax_repartition_line_id = False
+                #if line.salary_rule_id.account_tax_id:
+                #    tax_repartition_line_id = (
+                #        self.env["account.tax.repartition.line"]
+                #        .search(
+                #            [
+                #                (
+                #                    "invoice_tax_id",
+                #                    "=",
+                #                    line.salary_rule_id.account_tax_id.id,
+                #                ),
+                #                ("account_id", "=", account_id),
+                #            ]
+                #        )
+                #        .id
+                #    )
+                #    tax_tag_ids = (
+                #        self.env["account.tax.repartition.line"]
+                #        .search(
+                #            [
+                #                (
+                #                    "invoice_tax_id",
+                #                    "=",
+                #                    line.salary_rule_id.account_tax_id.id,
+                #                ),
+                #                ("repartition_type", "=", "tax"),
+                #                ("account_id", "=", account_id),
+                #            ]
+                #        )
+                #        .tag_ids
+                #    )
 
                 if debit_account_id:
                     debit_line = (
@@ -182,9 +182,9 @@ class HrPayslip(models.Model):
                             "analytic_account_id": analytic_salary_id
                             or slip.contract_id.analytic_account_id.id,
                             "tax_line_id": line.salary_rule_id.account_tax_id.id,
-                            "tax_ids": tax_ids,
-                            "tax_repartition_line_id": tax_repartition_line_id,
-                            "tax_tag_ids": tax_tag_ids,
+                            #"tax_ids": tax_ids,
+                            #"tax_repartition_line_id": tax_repartition_line_id,
+                            #"tax_tag_ids": tax_tag_ids,
                         },
                     )
                     line_ids.append(debit_line)
@@ -206,9 +206,9 @@ class HrPayslip(models.Model):
                             "analytic_account_id": analytic_salary_id
                             or slip.contract_id.analytic_account_id.id,
                             "tax_line_id": line.salary_rule_id.account_tax_id.id,
-                            "tax_ids": tax_ids,
-                            "tax_repartition_line_id": tax_repartition_line_id,
-                            "tax_tag_ids": tax_tag_ids,
+                            #"tax_ids": tax_ids,
+                            #"tax_repartition_line_id": tax_repartition_line_id,
+                            #"tax_tag_ids": tax_tag_ids,
                         },
                     )
                     line_ids.append(credit_line)
@@ -279,14 +279,14 @@ class HrSalaryRule(models.Model):
     _inherit = "hr.salary.rule"
 
     analytic_account_id = fields.Many2one(
-        "account.analytic.account", "Analytic Account"
+        "account.analytic.account", "Analytic Account", company_dependent=True
     )
-    account_tax_id = fields.Many2one("account.tax", "Tax")
+    account_tax_id = fields.Many2one("account.tax", "Tax", company_dependent=True)
     account_debit = fields.Many2one(
-        "account.account", "Debit Account", domain=[("deprecated", "=", False)]
+        "account.account", "Debit Account", company_dependent=True, domain=[("deprecated", "=", False)]
     )
     account_credit = fields.Many2one(
-        "account.account", "Credit Account", domain=[("deprecated", "=", False)]
+        "account.account", "Credit Account", company_dependent=True, domain=[("deprecated", "=", False)]
     )
 
     tax_base_id = fields.Many2one("hr.salary.rule", "Base")

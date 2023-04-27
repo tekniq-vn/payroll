@@ -8,20 +8,15 @@
                 decoration-muted="state == 'cancel'"
                 string="Payslips"
                 multi_edit="1"
-                sample="1"
             >
-                <field name="number" readonly="1" decoration-bf="1" />
+                <field name="number" readonly="1"  />
                 <field name="employee_id" readonly="1" />
                 <field name="name" />
-                <field name="date_from" optional="show" decoration-bf="1" />
-                <field name="date_to" optional="show" decoration-bf="1" />
+                <field name="date_from" optional="show"  />
+                <field name="date_to" optional="show"  />
                 <field name="activity_ids" widget="list_activity" optional="show" />
                 <field
                     name="state"
-                    decoration-success="state == 'done'"
-                    decoration-warning="state == 'verify'"
-                    decoration-info="state == 'draft'"
-                    decoration-danger="state == 'cancel'"
                     widget="badge"
                     optional="show"
                 />
@@ -279,8 +274,6 @@
                                     <field name="amount" readonly="1" />
                                     <field
                                         name="total"
-                                        decoration-danger="0 > total and parent_rule_id == False"
-                                        decoration-success="total > 0 and parent_rule_id == False"
                                         readonly="1"
                                     />
                                 </tree>
@@ -292,14 +285,11 @@
                                     string="Payslip Lines"
                                     decoration-info="total == 0"
                                 >
-                                    <field name="category_id" decoration-bf="1" />
+                                    <field name="category_id"  />
                                     <field name="code" widget="badge" />
                                     <field name="name" />
                                     <field
                                         name="total"
-                                        decoration-bf="1"
-                                        decoration-danger="0 > total"
-                                        decoration-success="total > 0"
                                     />
                                 </tree>
                             </field>

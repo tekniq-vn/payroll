@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <tree string="Salary Rules">
                 <field name="name" />
-                <field name="code" decoration-bf="1" />
+                <field name="code"/>
                 <field name="category_id" widget="badge" />
                 <field name="sequence" invisible="1" />
                 <field name="register_id" />

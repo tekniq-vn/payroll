@@ -57,7 +57,7 @@
                         <field name="quantity" readonly="1" />
                         <field name="rate" readonly="1" />
                         <field name="amount" readonly="1" />
-                        <field name="total" decoration-bf="1" readonly="1" />
+                        <field name="total" readonly="1" />
                     </group>
                     <field name="note" />
                 </group>
@@ -82,8 +82,6 @@
                                     <field name="amount" />
                                     <field
                                         name="total"
-                                        decoration-danger="0 > total and parent_line_id == False"
-                                        decoration-success="total > 0 and parent_line_id == False"
                                         sum="total_net"
                                     />
                                 </tree>
